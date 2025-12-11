@@ -1,0 +1,17 @@
+.navigation {
+  padding: 1rem;
+  background-color: var(--nav-bg, #f8f9fa);
+  border-bottom: 1px solid var(--border-color, #dee2e6);
+}
+
+.nav-btn {
+  transition: transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+}
+
+.nav-btn.active {
+  font-weight: 700;
+}

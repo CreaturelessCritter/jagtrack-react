@@ -1,0 +1,16 @@
+.calendar-embed-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.calendar-embed-container iframe {
+  width: 100%;
+  min-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .calendar-embed-container iframe {
+    min-height: 300px;
+  }
+}

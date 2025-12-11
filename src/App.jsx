@@ -1,48 +1,68 @@
-import { Container, Title, Text, Grid } from '@mantine/core'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
-import ClassCard from './components/ClassCard'
-import WeekDay from './components/WeekDay'
+import Navigation from './components/Navigation'
 import Footer from './components/Footer'
-import { classes } from './data/classes'
+import HomePage from './pages/HomePage'
+import ClassesPage from './pages/ClassesPage'
+import CalendarPage from './pages/CalendarPage'
+import AIChatPage from './pages/AIChatPage'
+import AboutPage from './pages/AboutPage'
+import { getCurrentTheme, toggleTheme as toggleThemeUtil } from './themeToggle'
+import './themes.css'
 import './App.css'
 
-
 function App() {
- return (
-   <div className="App">
-     <Header />
+  const [currentPage, setCurrentPage] = useState('home')
 
+  // Theme state - initialized from utility
+  const [theme, setTheme] = useState(getCurrentTheme)
 
-     <Container size="xl" py="xl">
-       <WeekDay />
+  // Sync theme state when it changes externally
+  useEffect(() => {
+    const currentTheme = getCurrentTheme()
+    if (currentTheme !== theme) {
+      setTheme(currentTheme)
+    }
+  }, [])
 
+  const handleToggleTheme = () => {
+    const newTheme = toggleThemeUtil()
+    setTheme(newTheme)
+  }
 
-       <Title order={2} ta="center" mb="md">My 4 Classes</Title>
-       <Text ta="center" c="dimmed" mb="xl">
-         Current Quarter
-       </Text>
+  // Google Calendar embed URL
+  const calendarEmbedUrl = 'https://calendar.google.com/calendar/embed?src=7vlchrviuvpd44nlf8t1dhk9en8gnpsh%40import.calendar.google.com&ctz=America%2FDenver'
 
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'home':
+        return <HomePage calendarEmbedUrl={calendarEmbedUrl} />
+      case 'classes':
+        return <ClassesPage />
+      case 'calendar':
+        return <CalendarPage calendarEmbedUrl={calendarEmbedUrl} />
+      case 'aichat':
+        return <AIChatPage />
+      case 'about':
+        return <AboutPage />
+      default:
+        return <HomePage calendarEmbedUrl={calendarEmbedUrl} />
+    }
+  }
 
-       <Grid>
-         {classes.map((classItem) => (
-           <Grid.Col
-             key={classItem.id}
-             span={{ base: 12, sm: 6, lg: 3 }}
-           >
-             <ClassCard {...classItem} />
-           </Grid.Col>
-         ))}
-       </Grid>
-     </Container>
+  return (
+    <div className="App">
+      <Header theme={theme} toggleTheme={handleToggleTheme} />
+      <Navigation currentPage={currentPage} onPageChange={setCurrentPage} />
 
+      {renderPage()}
 
-     <Footer
-       schoolName="Jefferson Academy Secondary"
-       email="your.name@jajags.com"
-     />
-   </div>
- )
+      <Footer
+        schoolName="Jefferson Academy Secondary"
+        email="travis.sarbin@jajags.com"
+      />
+    </div>
+  )
 }
-
 
 export default App

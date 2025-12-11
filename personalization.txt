@@ -1,0 +1,73 @@
+JagTrack React Module 2 - Personalization Document
+================================================
+
+Exercise 1: Multi-Page Navigation & Tabs
+----------------------------------------
+Design Choices:
+- Used useState hook to track the current active page
+- Navigation component receives currentPage and onPageChange props
+- Active button uses 'filled' variant, inactive uses 'subtle' for clear visual distinction
+- ClassesPage implements interactive tabs using useState to track active tab index
+- Each class tab shows block letter and switches content panel dynamically
+- AI Chat converted from vanilla JavaScript to React using useState, useRef, and useEffect hooks
+- Demo mode enabled by default (FORCE_DEMO_MODE = true) for easy testing without API key
+
+Exercise 2: Google Calendar Integration
+---------------------------------------
+Design Choices:
+- Embedded Google Calendar iframe in both HomePage and CalendarPage
+- Calendar shows Canvas assignment deadlines via iCal feed integration
+- Responsive design with min-height of 600px on desktop, 400px on mobile
+- Added mobile tip with link to open calendar in new tab for better mobile experience
+- HomePage shows compact calendar preview in "Upcoming Assignments" section
+
+Exercise 3: Dark/Light Mode Toggle
+----------------------------------
+Color Scheme Reasoning:
+- Light mode: Clean white background (#ffffff) with dark text (#213547) for readability
+- Dark mode: Near-black background (#1a1a1a) as requested, with light text (#e4e4e4)
+- Accent color (#f0ad4e) remains consistent across both themes for brand identity
+- Header gradient adjusts to darker blues in dark mode
+- All Mantine components properly override with CSS variables
+
+Technical Implementation:
+- themes.css contains CSS variables for :root (light) and [data-theme="dark"]
+- themeToggle.js exports three functions: initializeTheme(), toggleTheme(), getCurrentTheme()
+- localStorage persistence saves user preference with key 'jagtrack-theme'
+- main.jsx calls initializeTheme() before rendering app
+- Smooth 0.3s transitions on background and text color changes
+
+Exercise 4: About Me Page
+-------------------------
+Component Selection:
+- Card: Profile card with photo section
+- Badge: Grade level, interests, and skills display
+- Paper: Content sections with consistent styling
+- List: Academic goals and favorite classes
+- Grid: Two-column responsive layout
+- Group: Horizontal arrangement of badges and titles
+- Stack: Vertical spacing of content sections
+- Title: Section headings
+- Text: Body content and descriptions
+- Divider: Visual separation between sections
+- Image: Profile photo with fallback
+
+Responsive Design Approach:
+- Grid columns: 12 on mobile, splits to 4/8 on tablet and desktop
+- Profile card centers on mobile with max-width constraint
+- Font sizes and spacing adjust for smaller screens
+- Navigation buttons wrap nicely on mobile
+
+Overall Module 2 Reflection
+---------------------------
+This module taught me important React concepts:
+- useState for managing component state (active page, theme, messages)
+- useEffect for side effects (auto-scroll, theme initialization)
+- useRef for DOM element references (chat scroll container)
+- Props for passing data between components
+- Conditional rendering for page switching and loading states
+- CSS variables for theming and maintainability
+- localStorage for persisting user preferences
+
+The most challenging part was converting the AI Chat from vanilla JavaScript to React,
+understanding how to manage state and effects properly instead of direct DOM manipulation.

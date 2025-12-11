@@ -1,0 +1,94 @@
+/* Light Mode (default) */
+:root {
+  --primary-dark: #1a5490;
+  --accent-color: #f0ad4e;
+  --accent-secondary: #3b82f6;
+  --text-dark: #213547;
+  --text-light: #ffffff;
+  --text-muted: #868e96;
+  --background-light: #f8f9fa;
+  --background-white: #ffffff;
+  --background-dark: #242424;
+  --border-color: #dee2e6;
+  --header-bg: linear-gradient(135deg, #1a5490 0%, #2c5aa0 100%);
+  --nav-bg: #f8f9fa;
+  --footer-bg: #f8f9fa;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  --tab-bg: #e9ecef;
+  --tab-hover-bg: #dee2e6;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  --primary-dark: #0d2844;
+  --accent-color: #f0ad4e;
+  --accent-secondary: #3b82f6;
+  --text-dark: #e4e4e4;
+  --text-light: #ffffff;
+  --text-muted: #888888;
+  --background-light: #242424;
+  --background-white: #2d2d2d;
+  --background-dark: #1a1a1a;
+  --border-color: #404040;
+  --header-bg: linear-gradient(135deg, #0d2844 0%, #1a3a5c 100%);
+  --nav-bg: #242424;
+  --footer-bg: #242424;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  --tab-bg: #353535;
+  --tab-hover-bg: #404040;
+}
+
+/* Apply theme variables to body */
+body {
+  background-color: var(--background-white);
+  color: var(--text-dark);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode body */
+[data-theme="dark"] body {
+  background-color: var(--background-dark);
+}
+
+/* Dark mode overrides for Mantine components */
+[data-theme="dark"] .mantine-Paper-root {
+  background-color: var(--background-white);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .mantine-Card-root {
+  background-color: var(--background-white);
+  border-color: var(--border-color);
+}
+
+/* Fix Title text color in dark mode */
+[data-theme="dark"] .mantine-Title-root {
+  color: var(--text-dark);
+}
+
+/* Fix regular Text color in dark mode */
+[data-theme="dark"] .mantine-Text-root {
+  color: var(--text-dark);
+}
+
+/* Keep dimmed text properly dimmed */
+[data-theme="dark"] .mantine-Text-root[data-c="dimmed"] {
+  color: var(--text-muted);
+}
+
+/* Fix List item text color */
+[data-theme="dark"] .mantine-List-item {
+  color: var(--text-dark);
+}
+
+/* Fix icons color in dark mode */
+[data-theme="dark"] svg {
+  color: var(--text-dark);
+}
+
+/* Fix Divider in dark mode */
+[data-theme="dark"] .mantine-Divider-root {
+  border-color: var(--border-color);
+}

@@ -1,0 +1,14 @@
+.profile-card {
+  text-align: center;
+}
+
+.profile-card img {
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}

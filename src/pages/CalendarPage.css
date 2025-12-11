@@ -1,0 +1,28 @@
+.calendar-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.calendar-container iframe {
+  width: 100%;
+  min-height: 600px;
+}
+
+.calendar-placeholder {
+  padding: 3rem;
+  text-align: center;
+  background-color: var(--background-light, #f8f9fa);
+  border-radius: 8px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .calendar-container iframe {
+    min-height: 400px;
+  }
+}
